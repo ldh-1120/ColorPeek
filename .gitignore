@@ -1,8 +1,11 @@
 .idea
 .gradle
 build
-gradlew
 .bat
 run
 .vscode
 bin
+gradlew
+gradle.properties
+settings.gradle
+gradle
