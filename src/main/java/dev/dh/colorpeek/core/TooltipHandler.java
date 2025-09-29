@@ -32,8 +32,10 @@ public class TooltipHandler {
             int color = colorCache.computeIfAbsent(block, TooltipHandler::GetBlockColor);
             String hex = String.format("#%06X", (0xFFFFFF & color));
 
-            event.getToolTip().add(Component.literal(""));
-            event.getToolTip().add(Component.literal("■ " + hex).withStyle(style -> style.withColor(color)));
+            if (color != -1) {
+                event.getToolTip().add(Component.literal(""));
+                event.getToolTip().add(Component.literal("■ " + hex).withStyle(style -> style.withColor(color)));
+            }
         }
     }
 
@@ -86,7 +88,7 @@ public class TooltipHandler {
         }
 
         if (count == 0)
-            return 0xFFFFFF;
+            return -1;
 
         int avgR = (int) (totalR / count);
         int avgG = (int) (totalG / count);
